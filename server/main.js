@@ -8,7 +8,11 @@ Meteor.startup(function(){
 	//Creating stubbed data
 	Events.remove({});
 
-	Events.insert(Event.create("Lunchlecture 1"));
-	Events.insert(Event.create("Lunchlecture 2"));
-	Events.insert(Event.create("Lunchlecture 3"));
+	e1 = new Event("Lunchlecture 1");
+	e2 = new Event("Lunchlecture 2");
+	e3 = new Event("Lunchlecture 3");
+
+	Events.insert(e1);
+	Events.insert(e2);
+	Events.insert(e3);
 });

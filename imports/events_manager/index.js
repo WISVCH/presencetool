@@ -1,11 +1,15 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { Events } from '../collections/events.js';
 
 import './index.html';
 
+Template.body.onCreated(function(){
+	Meteor.subscribe('events');
+});
+
 Template.body.helpers({
-	events: [
-		{ title: "T.U.E.S.Day Lecture 1" },
-		{ title: "Career College Event 2.3" },
-		{ title: "Member's Lunch 4" }
-	]
+	events(){
+		return Events.find({});
+	}
 });

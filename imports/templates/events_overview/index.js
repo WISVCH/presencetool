@@ -18,6 +18,6 @@ Template.eventsOverview.helpers({
 
 Template.eventsOverview.events({
 	"click .eventBTN": function(eb){
-		Router.go('/event/' + eb.target.id);
+		Router.go('event', {_id: eb.target.id});
 	}
 })

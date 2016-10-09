@@ -13,5 +13,8 @@ Template.eventOverview.onCreated(function() {
 Template.eventOverview.events({
 	'click #liveToolBTN': function(){
 		Router.go('event.livetool', {_id: this._id});
+	},
+	'click #backToEventsBTN': function(){
+		Router.go('events');
 	}
 })

@@ -1,1 +1,1 @@
-import '../imports/events_manager/index.js'
+import '../imports/routes.js';

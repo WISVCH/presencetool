@@ -5,7 +5,7 @@ import { Events } from '../imports/collections/events.js';
 import { Event } from '../imports/data_structures/event.js';
 import { Registration } from '../imports/data_structures/registration.js';
 
-Meteor.startup(function(){
+var stubData = function(){
 	//Creating stubbed data
 	Events.remove({});
 
@@ -21,4 +21,6 @@ Meteor.startup(function(){
 	Events.insert(e1);
 	Events.insert(e2);
 	Events.insert(e3);
-});
+};
+
+Meteor.startup(stubData);

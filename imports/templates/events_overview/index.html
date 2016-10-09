@@ -1,0 +1,17 @@
+<template name="eventsOverview">
+	<body>
+		<h1>Events:</h1>
+
+		<ul>
+			{{#each events}}
+				{{>event}}
+			{{/each}}
+		</ul>
+	</body>
+</template>
+
+<template name="event">
+	<li>
+		<button>{{title}}</button>
+	</li>
+</template>

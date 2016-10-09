@@ -1,7 +1,7 @@
 export class Event {
 	constructor(title){
-		this.title = title,
-		this.registrations = []
+		this.title = title;
+		this.registrations = [];
 	}
 
 	addRegistration(registration){

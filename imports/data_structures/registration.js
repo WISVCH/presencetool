@@ -1,4 +1,4 @@
-export class Registration{
+export class Registration {
 	constructor(name, ucode){
 		this.name = name;
 		this.ucode = ucode;

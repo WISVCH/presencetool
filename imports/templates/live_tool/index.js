@@ -39,9 +39,11 @@ function checkCode(code) {
 function setBackgroundTint(color, seconds){
 	$('html').css("background-color", color);
 
-	setTimeout(() => {
-		$('html').css("background-color","");
-	}, seconds * 1000);
+	if(seconds != 0){
+		setTimeout(() => {
+			$('html').css("background-color","");
+		}, seconds * 1000);
+	}
 }
 
 Template.liveTool.onCreated(function() {
@@ -65,8 +67,10 @@ Template.liveTool.events({
 				Registrations.update({_id: result.registration._id}, {
 					$set: {present: 1}
 				});
+				$("#outputSpan").text(result.registration.name);
 				setBackgroundTint(Settings.correctColor, Settings.feedbackColorTimeSeconds);
 			}else{
+				$("#outputSpan").text(result.reason);
 				setBackgroundTint(Settings.wrongColor, Settings.feedbackColorTimeSeconds);
 			}
 			

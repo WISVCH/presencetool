@@ -79,3 +79,7 @@ Template.liveTool.events({
 		}
 	}
 });
+
+Template.liveTool.onDestroyed(() => {
+	$('html').css("background-color","");
+});

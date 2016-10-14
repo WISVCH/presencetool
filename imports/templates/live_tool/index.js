@@ -5,6 +5,8 @@ import { Registrations } from '../../collections/registrations.js';
 
 import { Router } from 'meteor/iron:router';
 
+import { Settings } from '../../settings.js';
+
 import './index.html';
 
 function checkCode(code) {
@@ -63,10 +65,9 @@ Template.liveTool.events({
 				Registrations.update({_id: result.registration._id}, {
 					$set: {present: 1}
 				});
-				console.log("hey");
-				setBackgroundTint("green", 0.5);
+				setBackgroundTint(Settings.correctColor, Settings.feedbackColorTimeSeconds);
 			}else{
-				setBackgroundTint("red", 0.5);
+				setBackgroundTint(Settings.wrongColor, Settings.feedbackColorTimeSeconds);
 			}
 			
 			rci.target.value = "";

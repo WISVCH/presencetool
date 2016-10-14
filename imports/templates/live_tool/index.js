@@ -12,19 +12,34 @@ function checkCode(code) {
 	var relatedReg = Registrations.findOne({ucode: icode});
 
 	if(!relatedReg){
-		console.log("Registration not found");
-		return;
+		return {
+			succes: false,
+			registration: relatedReg,
+			reason: "No registration with code " + code + " found"
+		};
 	}
 
 	if(!relatedReg.present){
-		Registrations.update({_id: relatedReg._id}, {
-			$set: {present: 1}
-		});
-		console.log("Presence of " + relatedReg.name + " has been registered!");
-		return;
+		return {
+			succes: true,
+			registration: relatedReg,
+			reason: ""
+		};
+	}else{
+		return {
+			succes: false,
+			registration: relatedReg,
+			reason: relatedReg.name + " has already been registered as present."
+		};
 	}
+}
 
-	console.log("Presence of " + relatedReg.name + " has already been registered");
+function setBackgroundTint(color, seconds){
+	$('html').css("background-color", color);
+
+	setTimeout(() => {
+		$('html').css("background-color","");
+	}, seconds * 1000);
 }
 
 Template.liveTool.onCreated(function() {
@@ -42,7 +57,18 @@ Template.liveTool.events({
 		var codeLength = inputVal.length;
 
 		if(codeLength == 4){
-			checkCode(inputVal);
+			result = checkCode(inputVal);
+
+			if(result.succes){
+				Registrations.update({_id: result.registration._id}, {
+					$set: {present: 1}
+				});
+				console.log("hey");
+				setBackgroundTint("green", 0.5);
+			}else{
+				setBackgroundTint("red", 0.5);
+			}
+			
 			rci.target.value = "";
 		}
 	}

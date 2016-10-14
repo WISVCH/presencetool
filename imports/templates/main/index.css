@@ -1,3 +1,4 @@
 html {
 	background-image: url("/wood.jpg");
+	background-blend-mode: luminosity;
 }

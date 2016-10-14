@@ -5,10 +5,15 @@ import './templates/login';
 import './templates/event_overview';
 import './templates/events_overview';
 import './templates/live_tool';
+import './templates/main';
 
 import { Events } from './collections/events.js';
 
 Meteor.subscribe('events');
+
+Router.configure({
+	layoutTemplate: 'main'
+});
 
 Router.route('/', function() {
 	//Logic for showing login screen or events overview

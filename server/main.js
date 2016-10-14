@@ -10,11 +10,11 @@ var stubData = function(){
 	Events.remove({});
 
 	e1 = new Event("Lunchlecture with 1 attendee");
-	//e1.addRegistration(new Registration("Beer van der Drift", 6007));
+	e1.addRegistration(new Registration("Beer van der Drift", 6007));
 
 	e2 = new Event("Lunchlecture with 2 attendents");
-	//e2.addRegistration(new Registration("Marjolein Bouwmeester", 6001));
-	//e2.addRegistration(new Registration("Beer van der Drift", 6007));
+	e2.addRegistration(new Registration("Marjolein Bouwmeester", 6001));
+	e2.addRegistration(new Registration("Beer van der Drift", 6007));
 
 	e3 = new Event("Lunchlecture with no attendents");
 

@@ -8,6 +8,7 @@ import { Router } from 'meteor/iron:router';
 import { Settings } from '../../settings.js';
 
 import './index.html';
+import '../event_statistics';
 
 function checkCode(code) {
 	var icode = parseInt(code);

@@ -6,6 +6,7 @@ import { Registrations } from '../../collections/registrations.js';
 
 import './index.html';
 import './registration.html';
+import '../event_statistics';
 
 Template.eventOverview.onCreated(function() {
 	this.autorun(() => {

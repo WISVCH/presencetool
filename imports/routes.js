@@ -17,7 +17,7 @@ Router.configure({
 });
 
 Router.route('/', function() {
-	//Logic for showing login screen or events overview
+	this.redirect('events');
 });
 
 Router.route('/login', function() {

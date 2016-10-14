@@ -6,6 +6,8 @@ import { Registrations } from '../imports/collections/registrations.js';
 import { Event } from '../imports/data_structures/event.js';
 import { Registration } from '../imports/data_structures/registration.js';
 
+import { Accounts } from 'meteor/accounts-base';
+
 var stubData = function(){
 	//Creating stubbed data
 	Events.remove({});
@@ -26,7 +28,15 @@ var stubData = function(){
 	e3._id = Events.insert(e3);
 };
 
+var initAccounts = function(){
+	Accounts.config({
+	  forbidClientAccountCreation : true
+	});
+}
+
 Meteor.startup(stubData);
+
+Meteor.startup(initAccounts);
 
 Meteor.methods({
 	'resetPresenceOfEvent': function(eventid){
@@ -38,3 +48,4 @@ Meteor.methods({
 		Registrations.remove({eid: eventid});
 	}
 });
+ 

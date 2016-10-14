@@ -1,14 +1,15 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { Events } from '../../collections/events.js';
 
 import { Router } from 'meteor/iron:router';
+import { Registrations } from '../../collections/registrations.js';
 
 import './index.html';
+import './registration.html';
 
 Template.eventOverview.onCreated(function() {
 	this.autorun(() => {
-		Meteor.subscribe('events');
+		Meteor.subscribe('registrations', this.data._id);
 	});
 });
 
@@ -19,4 +20,10 @@ Template.eventOverview.events({
 	'click #backToEventsBTN': function(){
 		Router.go('events');
 	}
-})
+});
+
+Template.eventOverview.helpers({
+	registrations: function(){
+		return Registrations.find({});
+	}
+});

@@ -4,7 +4,12 @@
 
 		<p>This is an event page!</p>
 
-		<p><button id='liveToolBTN'>Continue to presence tool</button></p>
-		<p><button id='backToEventsBTN'>Back to events overview</button></p>
+		<p><button id='liveToolBTN'>Continue to presence tool</button> | <button id='backToEventsBTN'>Back to events overview</button></p>
+
+		<ul>
+			{{#each registrations}}
+				<li>{{> registration}}</li>
+			{{/each}}
+		</ul>
 	</body>
 </template>

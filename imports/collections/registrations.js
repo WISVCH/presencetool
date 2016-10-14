@@ -1,20 +1,20 @@
 import { Mongo } from 'meteor/mongo';
 
-export const Events = new Mongo.Collection('events');
+export const Registrations = new Mongo.Collection('registrations');
 
 if (Meteor.isServer) {
-	Meteor.publish('events', function() {
-		return Events.find();
+	Meteor.publish('registrations', function(eventid) {
+		return Registrations.find({eid: eventid});
 	});
 }
 
-Events.allow({
+Registrations.allow({
 	insert() { return true; },
 	update() { return true; },
 	remove() { return true; },
 });
 
-Events.deny({
+Registrations.deny({
 	insert() { return false; },
 	update() { return false; },
 	remove() { return false; },

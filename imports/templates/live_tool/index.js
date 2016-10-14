@@ -1,31 +1,36 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { Events } from '../../collections/events.js';
+
+import { Registrations } from '../../collections/registrations.js';
 
 import { Router } from 'meteor/iron:router';
 
 import './index.html';
 
-function checkCode(context, code) {
-	console.log(context);
+function checkCode(code) {
+	var icode = parseInt(code);
+	var relatedReg = Registrations.findOne({ucode: icode});
 
-	var relatedRegs = context.registrations.filter(function(reg){
-		return reg.ucode == code;
-	});
-
-	if(relatedRegs.length == 1 && relatedRegs[0].ucode == code){
-		var relatedReg = relatedRegs[0];
-
-		if(relatedReg.present == 0){
-			console.log("Entry for " + relatedReg.name);
-		}
-	}else{
-		console.log("reg not found");
+	if(!relatedReg){
+		console.log("Registration not found");
+		return;
 	}
+
+	if(!relatedReg.present){
+		Registrations.update({_id: relatedReg._id}, {
+			$set: {present: 1}
+		});
+		console.log("Presence of " + relatedReg.name + " has been registered!");
+		return;
+	}
+
+	console.log("Presence of " + relatedReg.name + " has already been registered");
 }
 
 Template.liveTool.onCreated(function() {
-	Meteor.subscribe('events');
+	this.autorun(() => {
+		Meteor.subscribe('registrations', this.data._id);
+	});
 });
 
 Template.liveTool.events({
@@ -37,7 +42,7 @@ Template.liveTool.events({
 		var codeLength = inputVal.length;
 
 		if(codeLength == 4){
-			checkCode(this, inputVal);
+			checkCode(inputVal);
 			rci.target.value = "";
 		}
 	}

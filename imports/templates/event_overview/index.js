@@ -7,7 +7,9 @@ import { Router } from 'meteor/iron:router';
 import './index.html';
 
 Template.eventOverview.onCreated(function() {
-	Meteor.subscribe('events');
+	this.autorun(() => {
+		Meteor.subscribe('events');
+	});
 });
 
 Template.eventOverview.events({

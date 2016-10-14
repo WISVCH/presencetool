@@ -3,6 +3,7 @@ import { Router } from 'meteor/iron:router';
 
 import './templates/login';
 import './templates/event_overview';
+import './templates/new_event';
 import './templates/events_overview';
 import './templates/live_tool';
 import './templates/main';
@@ -29,6 +30,13 @@ Router.route('/events', function() {
 {
 	name: 'events'
 });
+
+Router.route('/event/new', function() {
+	this.render('newEvent');
+},
+{
+	name: 'event.new'
+})
 
 Router.route('/event/:_id', function() {
 	this.render('eventOverview', {

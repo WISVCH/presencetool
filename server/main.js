@@ -27,3 +27,14 @@ var stubData = function(){
 };
 
 Meteor.startup(stubData);
+
+Meteor.methods({
+	'resetPresenceOfEvent': function(eventid){
+		Registrations.update({eid: eventid}, {
+			$set: {present: 0}
+		});
+	},
+	'removeRegistrationsOfEvent': function(eventid){
+		Registrations.remove({eid: eventid});
+	}
+});

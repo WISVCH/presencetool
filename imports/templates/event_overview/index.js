@@ -20,6 +20,12 @@ Template.eventOverview.events({
 	},
 	'click #backToEventsBTN': function(){
 		Router.go('events');
+	},
+	'click #resetPresenceBTN': function(){
+		Meteor.call('resetPresenceOfEvent', this._id);
+	},
+	'click #emptyRegistrationsBTN': function(){
+		Meteor.call('removeRegistrationsOfEvent', this._id);	
 	}
 });
 

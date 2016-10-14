@@ -1,10 +1,16 @@
 <template name="eventOverview">
 	<body>
-		<h1>Event Title: {{title}}</h1>
+		<h1>Event: {{title}}</h1>
 
 		{{> eventStatistics}}
 
-		<p><button id='liveToolBTN'>Continue to presence tool</button> | <button id='backToEventsBTN'>Back to events overview</button></p>
+		<button id='liveToolBTN'>Continue to presence tool</button>
+		<br />
+		<button id='resetPresenceBTN'>Reset presence of attendees</button>
+		<br />
+		<button id='emptyRegistrationsBTN'>Remove all registrations</button>
+		<br />
+		<button id='backToEventsBTN'>Back to events overview</button>
 
 		<ul>
 			{{#each registrations}}

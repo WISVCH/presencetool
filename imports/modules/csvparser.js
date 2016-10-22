@@ -5,8 +5,8 @@ export const CSVParser = {
 			code: code
 		}
 	},
-	parseCSVRegistries: function(string){
-		const lines = string.split("\n");
+	parseCSVRegistries: function(csv){
+		const lines = csv.split("\n");
 		const tuples = lines.map((line) => {
 			return line.split(",")
 		});

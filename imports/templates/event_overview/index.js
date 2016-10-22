@@ -30,7 +30,6 @@ Template.eventOverview.events({
 	},
 	'click #resetPresenceBTN': function(){
 		Meteor.call('resetPresenceOfEvent', this._id);
-		console.log(Template.csvRegLoader);
 	},
 	'click #emptyRegistrationsBTN': function(){
 		Meteor.call('removeRegistrationsOfEvent', this._id);	

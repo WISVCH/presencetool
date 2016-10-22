@@ -10,26 +10,6 @@ import { Settings } from '../imports/settings.js';
 
 import { Accounts } from 'meteor/accounts-base';
 
-var stubData = function(){
-	//Creating stubbed data
-	Events.remove({});
-	Registrations.remove({});
-
-	e1 = new Event("Lunchlecture with 1 attendee");
-	e1._id = Events.insert(e1);
-
-	Registrations.insert(new Registration(e1._id, "Beer van der Drift", 6007));
-
-	e2 = new Event("Lunchlecture with 2 attendents");
-	e2._id = Events.insert(e2);
-
-	Registrations.insert(new Registration(e2._id, "Marjolein Bouwmeester", 6001));
-	Registrations.insert(new Registration(e2._id, "Maikel Kerkhof", 6002));
-
-	e3 = new Event("Lunchlecture with no attendents");
-	e3._id = Events.insert(e3);
-};
-
 var initAccounts = function(){
 	if(Meteor.users.find().count() == 0){
 		Accounts.createUser({
@@ -48,8 +28,6 @@ var initAccounts = function(){
 	  forbidClientAccountCreation : true
 	});
 }
-
-Meteor.startup(stubData);
 
 Meteor.startup(initAccounts);
 

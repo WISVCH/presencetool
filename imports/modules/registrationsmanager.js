@@ -34,7 +34,7 @@ export const RegistrationsManager = {
 		const undefinedCodes = RegObjects.filter((obj) => { return !obj.code; });
 
 		if(undefinedCodes.length != 0){
-			return "There are " + undefinedCodes.length + " undefined codes: " + parseToArray(undefinedCodes);
+			return "There are " + undefinedCodes.length + " undefined codes: " + this.parseToArray(undefinedCodes);
 		}
 
 		//Check for undefined names
@@ -49,14 +49,14 @@ export const RegistrationsManager = {
 		const otherCodeLengths = RegObjects.filter((obj) => { return obj.code.length != codeLength; });
 
 		if(otherCodeLengths.length != 0){
-			return "Not all codes are of equal length. The codes of " + parseToArray(otherCodeLengths) + " differ in length";
+			return "Not all codes are of equal length. The codes of " + this.parseToArray(otherCodeLengths) + " differ in length";
 		}
 
 		//Check if there are non-numeric codes
 		const invalidCodes = RegObjects.filter((obj) => { return !isFinite(obj.code); });
 
 		if(invalidCodes.length != 0){
-			return "There are invalid codes at " + parseToArray(invalidCodes);
+			return "There are invalid codes at " + this.parseToArray(invalidCodes);
 		}
 
 		//Check if there are duplicate codes
@@ -68,7 +68,7 @@ export const RegistrationsManager = {
 		});
 
 		if(duplicateCodes.length != 0){
-			return "Duplicate codes at " + parseToArray(duplicateCodes);
+			return "Duplicate codes at " + this.parseToArray(duplicateCodes);
 		}
 
 		//Yeeaah, we're all fine!

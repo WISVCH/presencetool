@@ -2,8 +2,15 @@
 	<h1>Add Event Form</h1>
 	<p>This form is to create a new event. Please fill in all details</p>
 	<form id="newEventForm">
-		<p>Event:</p>
+		<p>Event Title:</p>
 		<input type="text" name="etitle" />
+		<p>CSV File with registrations (Optional)</p>
+		<input 
+			type="file" 
+			name="csvinput" 
+			accept=".csv"
+			multiple="false" />
+		<p></p>
 		<input type="submit" value="Create new event" />
 	</form>
 </template>

@@ -1,6 +1,6 @@
 export class Registration {
-	constructor(event, name, ucode){
-		this.eid = event._id;
+	constructor(eventid, name, ucode){
+		this.eid = eventid;
 		this.name = name;
 		this.ucode = ucode;
 		this.present = 0;

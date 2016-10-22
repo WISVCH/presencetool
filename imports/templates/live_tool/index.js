@@ -11,8 +11,7 @@ import './index.html';
 import '../event_statistics';
 
 function checkCode(code) {
-	var icode = parseInt(code);
-	var relatedReg = Registrations.findOne({ucode: icode});
+	var relatedReg = Registrations.findOne({ucode: code});
 
 	if(!relatedReg){
 		return {

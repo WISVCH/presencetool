@@ -6,10 +6,17 @@
 
 		<button id='liveToolBTN'>Continue to presence tool</button>
 		<br />
+
 		<button id='resetPresenceBTN'>Reset presence of attendees</button>
 		<br />
-		<button id='emptyRegistrationsBTN'>Remove all registrations</button>
-		<br />
+
+		{{#if hasRegistrations}}
+			<button id='emptyRegistrationsBTN'>Remove all registrations</button>
+			<br />
+		{{else}}
+			{{> csvRegLoader}}
+		{{/if}}
+
 		<button id='backToEventsBTN'>Back to events overview</button>
 
 		<ul>

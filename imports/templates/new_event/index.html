@@ -4,12 +4,7 @@
 	<form id="newEventForm">
 		<p>Event Title:</p>
 		<input type="text" name="etitle" />
-		<p>CSV File with registrations (Optional)</p>
-		<input 
-			type="file" 
-			name="csvinput" 
-			accept=".csv"
-			multiple="false" />
+		{{> csvRegLoader}}
 		<p></p>
 		<input type="submit" value="Create new event" />
 	</form>
